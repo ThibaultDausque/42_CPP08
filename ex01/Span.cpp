@@ -2,7 +2,7 @@
 
 Span::Span()
 {
-	this->_tab.push_back(0);
+	this->_tab.reserve(0);
 	_N = 0;
 }
 
@@ -34,8 +34,8 @@ Span&	Span::operator=(const Span& src)
 
 void	Span::addNumber(unsigned int nb)
 {
-	if ((unsigned int)*this->_tab.end() >= this->_N)
-		throw std::runtime_error("* the vector list is full *");
+	if ((unsigned int)this->_tab.size() <= this->_N)
+		throw std::exception();
 	this->_tab.push_back(nb);
 }
 
@@ -54,15 +54,25 @@ int	Span::shortestSpan()
 {
 	int		min;
 
-	min = 0;
 	std::sort(_tab.begin(), _tab.end());
-	for (size_t i = 0; i < _tab.size(); i++)
+	for (size_t i = 0; i < _tab.size() - 1; i++)
 	{
-		for (size_t j = 0; j < _tab.size(); j++)
+		for (size_t j = i + 1; j < _tab.size(); j++)
 		{
-			if (static_cast<int>(_tab[i]) - static_cast<int>(_tab[j]))
-				min = static_cast<int>(_tab[1]) - static_cast<int>(_tab[0]);
+			if (static_cast<int>(_tab[j]) - static_cast<int>(_tab[i]) < min)
+				min = static_cast<int>(_tab[j]) - static_cast<int>(_tab[i]);
 		}
 	}
 	return min;
+}
+
+void	Span::displayTab()
+{
+	if (this->_N > 20)
+		return ;
+	std::sort(_tab.begin(), _tab.end());
+	std::cout << "The tab: ";
+	for (size_t i = 0; i < this->_tab.size(); i++)
+		std::cout << this->_tab[i] << " ";
+	std::cout << std::endl;
 }

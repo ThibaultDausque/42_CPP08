@@ -6,7 +6,7 @@ SRC = main.cpp \
 OBJS_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJS_DIR)/%.o)
 
-NAME = easyfind
+NAME = span
 
 all: $(NAME)
 

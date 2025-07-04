@@ -20,6 +20,7 @@ class Span
 		void	addNumber(unsigned int nb);
 		int		shortestSpan();
 		int		longestSpan();
+		void	displayTab();
 };
 
 #endif
