@@ -1,4 +1,5 @@
 #include "Span.hpp"
+#include <stdexcept>
 
 Span::Span()
 {
@@ -34,19 +35,21 @@ Span&	Span::operator=(const Span& src)
 
 void	Span::addNumber(unsigned int nb)
 {
-	if ((unsigned int)this->_tab.size() <= this->_N)
+	static unsigned int	i = 0;
+	if (i == this->_N)
 		throw std::exception();
 	this->_tab.push_back(nb);
+	i++;
 }
 
 int	Span::longestSpan()
 {
-	int		len;
-	int		max;
+	int		len = 0;
+	int		max = 0;
 
 	len = _tab.size();
 	std::sort(_tab.begin(), _tab.end());
-	max = static_cast<int>(_tab[len - 1]) - static_cast<int>(_tab[0]);
+	max = _tab[len - 1] - _tab[0];
 	return max;
 }
 
@@ -55,12 +58,13 @@ int	Span::shortestSpan()
 	int		min;
 
 	std::sort(_tab.begin(), _tab.end());
+	min = _tab[1] - _tab[0];
 	for (size_t i = 0; i < _tab.size() - 1; i++)
 	{
 		for (size_t j = i + 1; j < _tab.size(); j++)
 		{
-			if (static_cast<int>(_tab[j]) - static_cast<int>(_tab[i]) < min)
-				min = static_cast<int>(_tab[j]) - static_cast<int>(_tab[i]);
+			if (_tab[j] - _tab[i] < min)
+				min = _tab[j] - _tab[i];
 		}
 	}
 	return min;

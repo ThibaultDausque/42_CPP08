@@ -1,8 +1,7 @@
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 RM = rm -rf
-SRC = main.cpp \
-	  Span.cpp
+SRC = main.cpp
 OBJS_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJS_DIR)/%.o)
 
