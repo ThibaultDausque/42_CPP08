@@ -8,8 +8,8 @@ template <typename T>
 class MutantStack: public std::stack<T>
 {
     public:
-        MutantStack() : stack() {}
-        MutantStack(const MutantStack &cpy) : stack(cpy) {*this = src}
+        MutantStack() {}
+        MutantStack(const MutantStack &cpy) {*this = cpy;}
         ~MutantStack() {}
         MutantStack&    operator=(const MutantStack& src)
         {
