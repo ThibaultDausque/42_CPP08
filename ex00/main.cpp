@@ -20,7 +20,7 @@ int	main(void)
 	
 	try 
 	{
-		it_nb = ::easyfind(list, 5);
+		it_nb = ::easyfind(list, 42);
 		std::cout << "nb list: " << *it_nb << std::endl;
 	}
 	catch (const std::exception& e)

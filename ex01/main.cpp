@@ -4,7 +4,21 @@
 int	main(void)
 {
 
-	Span sp = Span(3);
+	Span sp = Span(5);
+	Span sp2 = Span(100000);	
+	try
+	{
+		for (int i = 0; i < 100000; i++)
+		{
+			sp2.addNumber(i);
+		}
+		std::cout << "Longest span: " << sp2.longestSpan() << std::endl;
+		std::cout << "Shortest span: " << sp2.shortestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	
 	try
 	{
