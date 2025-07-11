@@ -14,14 +14,10 @@ int	main(void)
 	c_list.push_back('o');
 	c_list.push_back('t');
 	c_list.push_back('o');
-
-	std::vector<int>::const_iterator	it_nb;
-	std::vector<char>::const_iterator	it_c;
 	
 	try 
 	{
-		it_nb = ::easyfind(list, 42);
-		std::cout << "nb list: " << *it_nb << std::endl;
+		::easyfind(list, 42);
 	}
 	catch (const std::exception& e)
 	{
@@ -30,8 +26,7 @@ int	main(void)
 
 	try
 	{
-		it_c = ::easyfind(c_list, 't');
-		std::cout << "char list: " << *it_c << std::endl;
+		::easyfind(c_list, 't');
 	}
 	catch (const std::exception& e)
 	{

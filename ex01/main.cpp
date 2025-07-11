@@ -1,23 +1,20 @@
 #include "Span.hpp"
-#include <vector>
 
 int	main(void)
 {
 
 	Span sp = Span(5);
-	Span sp2 = Span(100000);	
+	Span sp2 = Span(15000);	
 	try
 	{
-		for (int i = 0; i < 100000; i++)
-		{
-			sp2.addNumber(i);
-		}
+		sp2.lazyAdd(15000);
+		sp2.displayTab();
 		std::cout << "Longest span: " << sp2.longestSpan() << std::endl;
 		std::cout << "Shortest span: " << sp2.shortestSpan() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 	
 	try

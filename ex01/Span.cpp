@@ -35,11 +35,9 @@ Span&	Span::operator=(const Span& src)
 
 void	Span::addNumber(unsigned int nb)
 {
-	static unsigned int	i = 0;
-	if (i == this->_N)
+	if (this->_tab.size() == this->_N)
 		throw std::exception();
 	this->_tab.push_back(nb);
-	i++;
 }
 
 int	Span::longestSpan()
@@ -72,11 +70,21 @@ int	Span::shortestSpan()
 
 void	Span::displayTab()
 {
-	if (this->_N > 20)
+	if (this->_tab.size() == 0)
+		throw std::runtime_error("Error: tab not fill");
+	if (this->_tab.size() > 20)
 		return ;
 	std::sort(_tab.begin(), _tab.end());
 	std::cout << "The tab: ";
 	for (size_t i = 0; i < this->_tab.size(); i++)
 		std::cout << this->_tab[i] << " ";
 	std::cout << std::endl;
+}
+
+void	Span::lazyAdd(unsigned int nb)
+{
+	if (nb <= 0 || !nb)
+		throw std::runtime_error("Error: No number.");
+	for (unsigned int i = 0; i < nb; i++)
+		addNumber(i);
 }

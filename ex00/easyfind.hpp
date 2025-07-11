@@ -2,16 +2,23 @@
 # define EASYFIND_HPP
 
 # include <iostream>
+# include <algorithm>
+# include <vector>
 
 template <typename T>
-typename T::iterator	easyfind(T &a, int idx)
+void	easyfind(T &a, int idx)
 {
 	typename T::iterator	occ;
-	
-		occ = find(a.begin(), a.end(), idx);
-		if (!*occ)
+
+	occ = a.begin();
+	if (idx)
+	{
+		occ = std::find(a.begin(), a.end(), idx);
+		if (occ == a.end())
 			throw std::runtime_error("No occurence found");
-		return occ;
+		std::cout << "Value " << idx << " found." << std::endl;	
+	}
+	return ;
 }
 
 #endif

@@ -17,10 +17,12 @@ class Span
 		Span(const Span& cpy);
 		Span&	operator=(const Span& src);
 		~Span();
+
 		void	addNumber(unsigned int nb);
 		int		shortestSpan();
 		int		longestSpan();
 		void	displayTab();
+		void	lazyAdd(unsigned int nb);
 };
 
 #endif
