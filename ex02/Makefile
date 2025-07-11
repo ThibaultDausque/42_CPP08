@@ -17,10 +17,10 @@ $(OBJS_DIR)/%.o: %.cpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	@$(RM) $(NAME)
+	@$(RM) $(OBJS_DIR)
 
 fclean: clean
-	@$(RM) $(OBJS_DIR)
+	@$(RM) $(NAME)
 
 re: fclean $(NAME)
 
