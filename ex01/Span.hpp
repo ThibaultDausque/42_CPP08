@@ -4,6 +4,7 @@
 # include <iostream>
 # include <vector>
 # include <algorithm>
+# include <climits>
 
 class Span
 {
@@ -23,6 +24,16 @@ class Span
 		int		longestSpan();
 		void	displayTab();
 		void	lazyAdd(unsigned int nb);
+		template <typename T>
+		void addNumber(T b, T e)
+		{
+			int    s = std::distance(b, e);
+			
+			if (_tab.size() + s > this->_N)
+				throw std::runtime_error("Error: e > b.");
+			else
+				_tab.insert(_tab.end(), b, e);
+		}
 };
 
 #endif

@@ -1,36 +1,48 @@
 #include "easyfind.hpp"
+#include <vector>
+#include <list>
 
-int	main(void)
+int main(void)
 {
-	std::vector<int>	list;
+    {
+        try
+        {
+            std::cout << "With Vector" << std::endl;
+            int    arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-	list.push_back(1);
-	list.push_back(42);
-	list.push_back(360);
+            std::vector<int>    vect(arr, arr + sizeof(arr)/sizeof(arr[0]));
 
-	std::vector<char>	c_list;
+            easyfind(vect, 2);
+            easyfind(vect, 1);
+            easyfind(vect, 5);
+            easyfind(vect, 7);
+            easyfind(vect, 8);
+            easyfind(vect, 11);
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+    }
+        {
+        try
+        {
+            std::cout << "With List" << std::endl;
+            int    arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            
+            std::list<int>        list(arr, arr + sizeof(arr)/sizeof(arr[0]));
 
-	c_list.push_back('t');
-	c_list.push_back('o');
-	c_list.push_back('t');
-	c_list.push_back('o');
-	
-	try 
-	{
-		::easyfind(list, 42);
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	try
-	{
-		::easyfind(c_list, 't');
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	return 0;
+            easyfind(list, 9);
+            easyfind(list, 6);
+            easyfind(list, 3);
+            easyfind(list, 2);
+            easyfind(list, 4);
+            easyfind(list, -1);
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+    }
+    return (0);
 }

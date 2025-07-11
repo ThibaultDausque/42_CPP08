@@ -1,5 +1,4 @@
 #include "Span.hpp"
-#include <stdexcept>
 
 Span::Span()
 {
